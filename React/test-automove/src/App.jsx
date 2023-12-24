@@ -195,6 +195,32 @@ export default function App() {
                 console.log("TARGET", node.data());
                 console.log("TARGET TYPE", typeof node[0]);
               });
+              cy.automove({
+                nodesMatching: cy.$("#mid"),
+                reposition: "mean",
+                meanOnSelfPosition: function (node) {
+                  return false;
+                },
+              });
+              cy.automove({
+                nodesMatching: cy.$("#mid").neighbourhood().nodes(),
+                reposition: "drag",
+                dragWith: cy.$("#mid"),
+              });
+              cy.automove({
+                nodesMatching: cy.$("1"),
+                reposition: { x1: 350, x2: 450, y1: 100, y2: 200 },
+              });
+              cy.automove({
+                nodesMatching: cy.$("9"),
+                reposition: {
+                  type: "outside",
+                  x1: 350,
+                  x2: 450,
+                  y1: 100,
+                  y2: 200,
+                },
+              });
             }}
             abc={console.log("myCyRef", myCyRef)}
           />
