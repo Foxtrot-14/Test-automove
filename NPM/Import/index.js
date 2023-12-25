@@ -1,6 +1,6 @@
 import cytoscape from "cytoscape";
 import automove from "cytoscape-automove-foxtrot-test";
-import assert from "assert";
+
 cytoscape.use(automove);
-console.assert(cytoscape != null);
-console.assert(automove != null);
+const cy = cytoscape();
+console.assert(Object.getPrototypeOf(cy).automove != null);
